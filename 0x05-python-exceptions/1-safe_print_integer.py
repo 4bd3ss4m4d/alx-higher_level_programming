@@ -7,8 +7,7 @@ def safe_print_integer(value):
         value (int): The integer to print.
     Returns:
         True if value has been correctly printed (it means the value is an
-        integer). False otherwise
-        '''
+        integer). False otherwise'''
     try:
         print("{:d}".format(value))
         return True
