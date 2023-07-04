@@ -1,0 +1,73 @@
+The ``0-add_integer`` module
+============================
+
+Using ``add_integer``
+---------------------
+Importing the function from the module:
+    >>> add_integer = __import__('0-add_integer').add_integer
+
+Checking for regular addition:
+    >>> add_integer(5, 8)
+    13
+    >>> add_integer(2, 1)
+    3
+    >>> add_integer(0, 9)
+    9
+
+Checking negative with positive:
+    >>> add_integer(-2, 3)
+    1
+    >>> add_integer(9, -9)
+    0
+    >>> add_integer(2, -100)
+    -98
+
+Checking negative with negative:
+    >>> add_integer(-2, -8)
+    -10
+    >>> add_integer(-99, -99)
+    -198
+    >>> add_integer(-5, -50000)
+    -50005
+
+Checking with floating-point numbers:
+    >>> add_integer(1.0, 7.0)
+    8
+    >>> add_integer(5.5, 0.5)
+    5
+    >>> add_integer(100.5, 1.5)
+    101
+
+Combining Floating and Non-floating numbers:
+    >>> add_integer(1.0, 7)
+    8
+    >>> add_integer(-3, 5.5)
+    2
+    >>> add_integer(0, -9.99)
+    -9
+
+The second argument is optional - by default, it is 98:
+    >>> add_integer(0)
+    98
+    >>> add_integer(2)
+    100
+
+Checking when no numbers have been passed to the function:
+    >>> add_integer()
+    Traceback (most recent call last):
+        ...
+    TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Passing non-number to the function:
+    >>> add_integer("Abdessamad", 9)
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
+    >>> add_integer(5, "Abdessamad")
+    Traceback (most recent call last):
+        ...
+    TypeError: b must be an integer
+    >>> add_integer({"number": 5}, "Abdessamad")
+    Traceback (most recent call last):
+        ...
+    TypeError: a must be an integer
