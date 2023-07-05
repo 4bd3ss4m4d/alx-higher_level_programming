@@ -1,0 +1,68 @@
+The ``101-lazy_matrix_mul` module
+=============================
+
+Using ``lazy_matrix_mul``
+-------------------------
+
+Importing the function from the module:
+    >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
+
+Checking matrix multiplication:
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    array([[ 58,  64],
+           [139, 154]])
+
+Checking matrix multiplication with negative numbers:
+    >>> matrix_a = [[-1, -2, -3], [4, 5, 6]]
+    >>> matrix_b = [[7, 8], [-9, -10], [11, 12]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    array([[-22, -24],
+           [ 49,  54]])
+
+Checking matrix multiplication with different-sized matrices:
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_b = [[7, 8, 9]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 1 is different from 3)
+
+Checking matrix multiplication with non-integer or non-float elements:
+    >>> matrix_a = [[1, 2, 3], [4, '5', 6]]
+    >>> matrix_b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    numpy.core._exceptions._UFuncNoLoopError: ufunc 'matmul' did not contain a loop with signature matching types (dtype('<U21'), dtype('int64')) -> None
+
+Checking matrix multiplication with empty matrices:
+    >>> matrix_a = [[]]
+    >>> matrix_b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 3 is different from 0)
+
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_b = []
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 0 is different from 3)
+
+Checking matrix multiplication with invalid row sizes:
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6], [7, 8]]
+    >>> matrix_b = [[7, 8], [9, 10], [11, 12]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (3,) + inhomogeneous part.
+
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_b = [[7, 8, 9], [10, 11]]
+    >>> lazy_matrix_mul(matrix_a, matrix_b)
+    Traceback (most recent call last):
+    ...
+    ValueError: setting an array element with a sequence. The requested array has an inhomogeneous shape after 1 dimensions. The detected shape was (2,) + inhomogeneous part.
